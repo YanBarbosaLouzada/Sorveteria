@@ -1,0 +1,17 @@
+.mainProduct {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.setInput {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.sorvetes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
