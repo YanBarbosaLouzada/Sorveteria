@@ -6,66 +6,86 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import Grid from '@mui/material/Grid';
+import Divider from '@mui/material/Divider';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, clearCart } from "../../redux/cart/cartSlice";
-
 
 export default function AnchorTemporaryDrawer() {
     const cart = useSelector((state) => state.cart.cartItems);
     const dispatch = useDispatch();
     const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
         right: false,
     });
 
     const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
         setState({ ...state, [anchor]: open });
     };
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 400 }}
+            sx={{
+                width: 400,
+                p: 2,
+                height: '100%',
+                position: 'relative',
+                backgroundColor: "#f9f9f9"
+            }}
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
         >
-            <h2>🛒 Carrinho de Compras</h2>
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
+                🛒 Seu Carrinho
+            </Typography>
+
+            <Divider sx={{ mb: 2 }} />
 
             {cart.length === 0 ? (
-                <p>O carrinho está vazio.</p>
+                <Typography variant="body1" align="center">O carrinho está vazio.</Typography>
             ) : (
-                <div className="carrinho-grid">
+                <Grid container spacing={2}>
                     {cart.map((item) => (
-                        <Card key={item.id} sx={{ width: 250, border: 1, margin: 2 }}>
-                            <CardMedia component="img" height="140" image={item.img} alt={item.name} />
-                            <CardContent>
-                                <Typography variant="h6">{item.name}</Typography>
-                                <Typography variant="body2">Quantidade: {item.quantity}</Typography>
-                                <Typography variant="body2"><b>⭐ {item.rating}</b></Typography>
-                                <Button
-                                    sx={{ mt: 1 }}
-                                    variant="contained"
-                                    color="error"
-                                    onClick={() => dispatch(removeFromCart(item.id))}
-                                >
-                                    Remover
-                                </Button>
-                            </CardContent>
-                        </Card>
+                        <Grid item xs={12} key={item.id}>
+                            <Card sx={{ display: 'flex', borderRadius: 2, boxShadow: 3 }}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: 100, objectFit: 'cover' }}
+                                    image={item.img}
+                                    alt={item.name}
+                                />
+                                <CardContent sx={{ flex: '1 0 auto' }}>
+                                    <Typography component="div" variant="h6">{item.name}</Typography>
+                                    <Typography variant="body2" color="text.secondary">Qtd: {item.quantity}</Typography>
+                                    <Typography variant="body2"><b>⭐ {item.rating}</b></Typography>
+                                    <Button
+                                        variant="outlined"
+                                        color="error"
+                                        size="small"
+                                        sx={{ mt: 1 }}
+                                        onClick={() => dispatch(removeFromCart(item.id))}
+                                    >
+                                        Remover
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </Grid>
                     ))}
-                </div>
+                </Grid>
             )}
 
             {cart.length > 0 && (
-                <Button sx={{ mt: 2 }} variant="contained" color="warning" onClick={() => dispatch(clearCart())}>
-                    🗑 Limpar Carrinho
-                </Button>
+                <Box sx={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="warning"
+                        onClick={() => dispatch(clearCart())}
+                    >
+                        🗑 Limpar Carrinho
+                    </Button>
+                </Box>
             )}
         </Box>
     );
@@ -74,12 +94,12 @@ export default function AnchorTemporaryDrawer() {
         <div>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button
+                    <a
                         onClick={toggleDrawer(anchor, true)}
-                        sx={{ my: 2, color: 'white', display: 'block', textShadow: "2px 2px 8px rgba(0,0,0,0.3)" }}
+                        sx={{ color: 'white',  }}
                     >
-                        <a>{anchor}</a> 
-                    </Button>
+                        Carrinho
+                    </a>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}

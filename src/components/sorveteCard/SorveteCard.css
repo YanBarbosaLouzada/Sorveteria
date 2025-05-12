@@ -1,29 +1,28 @@
+.content-sabores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .flavors {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 8px;
-    
 }
 
 .flavor {
-    background-color: #ffccd5;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #6a040f;
+    background-color: #ff9800;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    margin: 3px;
+    font-size: 12px;
 }
 
-.rating {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
+button {
+    transition: all 0.3s ease-in-out;
 }
 
-.content-sabores{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    margin-top: 10px;
+button:hover {
+    transform: scale(1.05);
 }

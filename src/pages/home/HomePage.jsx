@@ -1,14 +1,25 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Container, Grid, Card, CardContent, Button, Box } from "@mui/material";
-import IcecreamIcon from "@mui/icons-material/Icecream";
-import "./Homepage.css"
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  Box,
+} from "@mui/material";
+
+import "./Homepage.css";
+
 const HomePage = () => {
   return (
     <div className="bg-home">
       {/* Banner */}
       <Box
         sx={{
-          backgroundImage: `url(https://fricon.com.br/img/seguimentos/sorvetes.png)`,
+          backgroundImage: `url(https://praiadoforte.org.br/wp-content/uploads/2024/05/sorveteria-60-sabores.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: 300,
@@ -51,12 +62,31 @@ const HomePage = () => {
         }}
       >
         <Container>
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold", color: "#ffd700", textShadow: "2px 2px 8px rgba(0,0,0,0.6)" }}>
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+              color: "#ffd700",
+              textShadow: "2px 2px 8px rgba(0,0,0,0.6)",
+            }}
+          >
             Nossa História
           </Typography>
-          <Typography variant="body1" sx={{ maxWidth: "800px", margin: "0 auto", fontSize: "1.1rem", lineHeight: 1.8 }}>
-            Tudo começou em 1985, quando Dona Ana, apaixonada por sobremesas, decidiu criar sorvetes artesanais que combinassem qualidade e amor.
-            O sucesso foi imediato! Hoje, a **Sorveteria Delícia** continua essa tradição, trazendo sabores incríveis e momentos especiais para nossos clientes.
+          <Typography
+            variant="body1"
+            sx={{
+              maxWidth: "800px",
+              margin: "0 auto",
+              fontSize: "1.1rem",
+              lineHeight: 1.8,
+            }}
+          >
+            Tudo começou em 1985, quando Dona Ana, apaixonada por sobremesas,
+            decidiu criar sorvetes artesanais que combinassem qualidade e amor.
+            O sucesso foi imediato! Hoje, a **Sorveteria Delícia** continua essa
+            tradição, trazendo sabores incríveis e momentos especiais para
+            nossos clientes.
           </Typography>
           <Button
             variant="contained"
@@ -75,48 +105,94 @@ const HomePage = () => {
       {/* Missão, Visão e Valores */}
       <Box
         sx={{
-          backgroundImage: "url(https://forbes.com.br/wp-content/uploads/2021/09/Life_DiadoSorvete_22set2021_Divulgacao.jpg)",
+          backgroundImage:
+            "url(https://forbes.com.br/wp-content/uploads/2021/09/Life_DiadoSorvete_22set2021_Divulgacao.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           py: 8,
-          boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.5)",
-          border: "1px solid black",
+          textAlign: "center",
+          color: "white",
+          boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.6)",
         }}
       >
         <Container>
-          <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: "bold", color: "white", textShadow: "2px 2px 8px rgba(0,0,0,0.3)", mb: 4 }}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              color: "#ffd700",
+              textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+            }}
+          >
             Missão, Visão e Valores
           </Typography>
-          <Grid container spacing={3}>
-            {[
-              { title: "Missão", text: "Levar felicidade e refrescância através de sorvetes artesanais feitos com carinho.", bg: "#ffcccb" },
-              { title: "Visão", text: "Ser reconhecida como a melhor sorveteria artesanal do Brasil, criando experiências inesquecíveis.", bg: "#ffff99" },
-              { title: "Valores", text: "Qualidade, inovação, sustentabilidade e paixão pelo que fazemos.", bg: "#b0e0e6" },
-            ].map((item, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Card
-                  sx={{
-                    bgcolor: item.bg,
-                    textAlign: "center",
-                    p: 3,
-                    minHeight: "200px",
-                    borderRadius: "12px",
-                    boxShadow: "4px 4px 10px rgba(0,0,0,0.1)",
-                    transition: "transform 0.3s ease",
-                    ":hover": { transform: "scale(1.05)" },
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
-                      {item.title}
-                    </Typography>
-                    <Typography variant="body1" sx={{ fontSize: "1.1rem", lineHeight: 1.6 }}>
-                      {item.text}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
+
+          <Grid container spacing={3} sx={{ mt: 5 }}>
+            {/* Missão */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "white",
+                  height: "8.9rem",
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    🌟 Missão
+                  </Typography>
+                  <Typography variant="body1">
+                    Oferecer sorvetes artesanais de alta qualidade,
+                    proporcionando felicidade a cada colherada.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            {/* Visão */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "white",
+                  height: "8.9rem",
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    🔍 Visão
+                  </Typography>
+                  <Typography variant="body1">
+                    Ser referência em sorvetes artesanais, inovando sempre e
+                    criando sabores inesquecíveis.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            {/* Valores */}
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(5px)",
+                  color: "white",
+                  height: "8.9rem",
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    💖 Valores
+                  </Typography>
+                  <Typography variant="body1">
+                    Qualidade, paixão, inovação e respeito pelos nossos clientes
+                    e ingredientes.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
         </Container>
       </Box>
