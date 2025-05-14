@@ -8,47 +8,49 @@ import Button from "@mui/material/Button";
 import "./SorveteCard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cart/cartSlice";
+import { showPopup } from "../../redux/popup/popupSlice";
 
-export default function SorveteCard(sorvete) {
+export default function SorveteCard({sorvete}) {
   const cart = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
   return (
     <Card
       sx={{
-        width: 320,
+        width: 250,
         borderRadius: 2,
         boxShadow: 3,
-        transition: "transform 0.3s ease-in-out",
-        "&:hover": { transform: "scale(1.05)", boxShadow: 6 },
       }}
     >
       <CardActionArea>
         <CardMedia
           component="img"
           height="200"
-          image={sorvete.img}
+          image={sorvete.imageSrc}
           alt={sorvete.name}
-          sx={{ borderRadius: "10px 10px 0 0" }}
         />
-        <CardContent>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        <CardContent >
+          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
             {sorvete.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             {sorvete.flavors.join(", ")}
-          </Typography>
-          <Typography variant="h6" color="primary" sx={{ mt: 1 }}>
-            ⭐ {sorvete.rating}
+          </Typography> */}
+          <Typography variant="h7" color="warning" >
+            💰<b>$ {sorvete.price}</b> 
           </Typography>
           <Button
             variant="contained"
             fullWidth
-            sx={{
-              mt: 2,
-              backgroundColor: "#ff9800",
-              "&:hover": { backgroundColor: "#e68900" },
+            sx={{backgroundColor: "litegreen", padding: 1, mt: 3}}
+            onClick={() => {
+              dispatch(addToCart(sorvete));
+              dispatch(
+                showPopup({
+                  message: `Item adicionado ao carrinho!`,
+                  color: "success",
+                })
+              );
             }}
-            onClick={() => dispatch(addToCart(sorvete))}
           >
             Adicionar ao Carrinho
           </Button>

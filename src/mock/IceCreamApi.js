@@ -1,202 +1,42 @@
-export const iceCreams = [
+export const SorveteList = [
     {
         id: 1,
-        name: "Chocolate Supreme",
-        image: "https://example.com/chocolate.jpg",
-        flavors: ["Chocolate", "Cacau Intenso"],
-        rating: 4.8,
-        description: "Delicioso sorvete de chocolate com pedaços de cacau intenso."
+        name: 'Sorvete de Chocolate',
+        href: '#',
+        price: 5.50,
+        imageSrc: 'https://s2-g1.glbimg.com/P9Js-ERqWnZp3mcL7tHyM6N5SWw=/0x0:1080x1079/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/6/N/YAqwDaSFCWLxVjTZb9mg/snapinsta.app-366201212-318238204095430-6350978613078668919-n-1080.jpg',
+        imageAlt: 'Sorvete de chocolate cremoso em uma casquinha crocante.',
     },
     {
         id: 2,
-        name: "Morango Delicado",
-        image: "https://example.com/strawberry.jpg",
-        flavors: ["Morango", "Creme"],
-        rating: 4.6,
-        description: "Uma mistura perfeita de morango fresco e creme."
+        name: 'Sorvete de Morango',
+        href: '#',
+        price: 4.90,
+        imageSrc: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8',
+        imageAlt: 'Sorvete de morango com cobertura de frutas vermelhas.',
     },
     {
         id: 3,
-        name: "Baunilha Clássica",
-        image: "https://example.com/vanilla.jpg",
-        flavors: ["Baunilha"],
-        rating: 4.7,
-        description: "O clássico sorvete de baunilha com sabor suave e cremoso."
-    },
-    {
-        id: 4,
-        name: "Menta com Chocolate",
-        image: "https://example.com/mint-choco.jpg",
-        flavors: ["Menta", "Chocolate"],
-        rating: 4.5,
-        description: "Refrescante sorvete de menta com pedaços crocantes de chocolate."
+        name: 'Sorvete de Baunilha',
+        href: '#',
+        price: 4.50,
+        imageSrc: 'https://www.mundoboaforma.com.br/wp-content/uploads/2022/07/Sorvete-vegano-de-baunilha-500x375.jpg',
+        imageAlt: 'Delicioso sorvete de baunilha com calda de caramelo.',
     },
     {
         id: 5,
-        name: "Caramelo Salgado",
-        image: "https://example.com/salted-caramel.jpg",
-        flavors: ["Caramelo", "Sal"],
-        rating: 4.9,
-        description: "Uma combinação irresistível de caramelo doce e toque de sal."
+        name: 'Sorvete de Abacaxi',
+        href: '#',
+        price: 6.20,
+        imageSrc: 'https://img.freepik.com/fotos-premium/casquinha-de-sorvete-de-abacaxi-isolada-na-superficie-branca-com-tracado-de-recorte_106885-2955.jpg?w=360',
+        imageAlt: 'Sorvete de pistache com pedaços de nozes crocantes.',
     },
     {
         id: 6,
-        name: "Cookies & Cream",
-        image: "https://example.com/cookies-cream.jpg",
-        flavors: ["Baunilha", "Biscoito"],
-        rating: 4.8,
-        description: "Sorvete de baunilha com pedacinhos crocantes de biscoito."
+        name: 'Sorvete de Limão',
+        href: '#',
+        price: 6.20,
+        imageSrc: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUAVdDPcLXP0UzrKSIXB37vw0aembxVt6x27QKFk5lsHd7ulqpTnj-h8rsL9q7hTacmwMM0rhvNB1-lM9bQDuMjwdT3Hc9l3oyyfRBdk7ib7wg0uUnLxyoKv0vZKk0nYxkKE9YByEbQ8Nd/s1600/IMG_2870.JPG',
+        imageAlt: 'Sorvete de pistache com pedaços de nozes crocantes.',
     },
-    {
-        id: 7,
-        name: "Pistache",
-        image: "https://example.com/pistachio.jpg",
-        flavors: ["Pistache"],
-        rating: 4.7,
-        description: "Um sabor sofisticado e levemente adocicado de pistache."
-    },
-    {
-        id: 8,
-        name: "Torta de Limão",
-        image: "https://example.com/keylime.jpg",
-        flavors: ["Limão", "Biscoito"],
-        rating: 4.6,
-        description: "Uma explosão cítrica com pedacinhos de biscoito crocante."
-    },
-    {
-        id: 9,
-        name: "Coco Cremoso",
-        image: "https://example.com/coconut.jpg",
-        flavors: ["Coco"],
-        rating: 4.7,
-        description: "Sabor tropical com leite de coco e lascas de coco natural."
-    },
-    {
-        id: 10,
-        name: "Amêndoas Torradas",
-        image: "https://example.com/almond.jpg",
-        flavors: ["Amêndoas", "Caramelo"],
-        rating: 4.5,
-        description: "Sorvete cremoso com amêndoas torradas e toque de caramelo."
-    },
-    {
-        id: 11,
-        name: "Frutas Vermelhas",
-        image: "https://example.com/berry-mix.jpg",
-        flavors: ["Framboesa", "Morango", "Amora"],
-        rating: 4.6,
-        description: "Mistura deliciosa de frutas vermelhas frescas."
-    },
-    {
-        id: 12,
-        name: "Café Intenso",
-        image: "https://example.com/coffee.jpg",
-        flavors: ["Café"],
-        rating: 4.9,
-        description: "Sorvete forte e cremoso para amantes de café."
-    },
-    {
-        id: 13,
-        name: "Doce de Leite",
-        image: "https://example.com/dulce-de-leche.jpg",
-        flavors: ["Leite", "Caramelo"],
-        rating: 4.8,
-        description: "Sabor intenso e cremoso de doce de leite artesanal."
-    },
-    {
-        id: 14,
-        name: "Brownie de Chocolate",
-        image: "https://example.com/brownie.jpg",
-        flavors: ["Chocolate", "Brownie"],
-        rating: 4.7,
-        description: "Pedaços generosos de brownie misturados ao sorvete de chocolate."
-    },
-    {
-        id: 15,
-        name: "Açaí Energético",
-        image: "https://example.com/acai.jpg",
-        flavors: ["Açaí"],
-        rating: 4.6,
-        description: "Sorvete saudável e refrescante de açaí."
-    },
-    {
-        id: 16,
-        name: "Maracujá Tropical",
-        image: "https://example.com/passionfruit.jpg",
-        flavors: ["Maracujá"],
-        rating: 4.6,
-        description: "Sabor azedinho e refrescante de maracujá."
-    },
-    {
-        id: 17,
-        name: "Uva Roxa",
-        image: "https://example.com/grape.jpg",
-        flavors: ["Uva"],
-        rating: 4.5,
-        description: "Sorvete doce e suave com suco de uva natural."
-    },
-    {
-        id: 18,
-        name: "Banana Caramelada",
-        image: "https://example.com/banana-caramel.jpg",
-        flavors: ["Banana", "Caramelo"],
-        rating: 4.7,
-        description: "Combinação perfeita de banana madura e caramelo."
-    },
-    {
-        id: 19,
-        name: "Nutella Sensação",
-        image: "https://example.com/nutella.jpg",
-        flavors: ["Chocolate", "Avelã"],
-        rating: 4.9,
-        description: "Sorvete cremoso de chocolate com Nutella."
-    },
-    {
-        id: 20,
-        name: "Gengibre Exótico",
-        image: "https://example.com/ginger.jpg",
-        flavors: ["Gengibre"],
-        rating: 4.4,
-        description: "Sabor único e levemente picante de gengibre."
-    },
-    {
-        id: 21,
-        name: "Manga Suave",
-        image: "https://example.com/mango.jpg",
-        flavors: ["Manga"],
-        rating: 4.5,
-        description: "Sorvete tropical com pedaços de manga fresca."
-    },
-    {
-        id: 22,
-        name: "Melancia Refrescante",
-        image: "https://example.com/watermelon.jpg",
-        flavors: ["Melancia"],
-        rating: 4.6,
-        description: "Sabor doce e hidratante da melancia."
-    },
-    {
-        id: 23,
-        name: "Abacaxi com Hortelã",
-        image: "https://example.com/pineapple-mint.jpg",
-        flavors: ["Abacaxi", "Hortelã"],
-        rating: 4.7,
-        description: "Mistura tropical refrescante com toque de hortelã."
-    },
-    {
-        id: 24,
-        name: "Tiramisu",
-        image: "https://example.com/tiramisu.jpg",
-        flavors: ["Café", "Baunilha", "Cacau"],
-        rating: 4.8,
-        description: "Sorvete inspirado na clássica sobremesa italiana."
-    },
-    {
-        id: 25,
-        name: "Iogurte com Mel",
-        image: "https://example.com/yogurt-honey.jpg",
-        flavors: ["Iogurte", "Mel"],
-        rating: 4.5,
-        description: "Sorvete cremoso de iogurte adoçado com mel puro."
-    }
 ];

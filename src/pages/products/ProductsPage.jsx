@@ -1,46 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useGetAPIDATA } from "../../hooks/getAPIDATA.jsx";
+
 import SorveteCard from "../../components/sorveteCard/SorveteCard.jsx";
-import Popup from "../../components/popup/Popup.jsx";
-import "./ProductsPage.css";
+import { SorveteList } from "../../mock/IceCreamApi.js";
+
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
+import Popup, { PopupDisplay } from "../../components/popup/Popup.jsx";
+import { useDispatch } from "react-redux";
+import { hidePopup } from "../../redux/popup/popupSlice";
+import { showPopup } from "../../redux/popup/popupSlice.js";
+
+import "./ProductsPage.css";
+
 function ProductsPage() {
+  const dispatch = useDispatch();
   const [sorveteNome, setSorveteNome] = useState("");
   const [sorveteDigitado, setSorveteDigitado] = useState("");
-  const { sorveteData, loading, error } = useGetAPIDATA(sorveteNome);
-  const [popupContent, setPopupContent] = useState({ message: "", color: "" });
-  const [showPopup, setShowPopup] = useState(false);
-
-  function showAndHidePopup(message, color) {
-    setPopupContent({ message, color });
-    setShowPopup(true);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000);
-  }
-
-  useEffect(() => {
-    if (!loading) {
-      if (error) {
-        showAndHidePopup("Erro ao buscar sorvete", "red");
-      } else if (sorveteData) {
-        showAndHidePopup("Sorvete encontrado!", "success");
-      }
-    }
-  }, [loading, error, sorveteData]);
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setSorveteDigitado(e.target.value);
-  };
+  const [sorvetes, setSorvete] = useState([...SorveteList]);
 
   function BuscarSorverte(e) {
     e.preventDefault();
     setSorveteNome(sorveteDigitado);
+    dispatch(showPopup({ message: "Busca realizada!", color: "success" }));
   }
 
   return (
@@ -64,7 +48,7 @@ function ProductsPage() {
             sx={{ ml: 2, flex: 1 }}
             placeholder="Digite o nome do sorvete..."
             value={sorveteDigitado}
-            onChange={handleInputChange}
+            onChange={(e) => setSorveteDigitado(e.target.value)}
             inputProps={{ style: { fontSize: "16px" } }}
           />
           <IconButton
@@ -80,24 +64,20 @@ function ProductsPage() {
         </Paper>
       </div>
 
-      {loading && <p>Carregando...</p>}
-      {error && <p>Erro ao buscar sorvete. Erro: {error}</p>}
+      <div className="sorvetes">
 
-      <div className="content" style={{ width: "90%" }}>
-        {Array.isArray(sorveteData) ? (
-          <div className="sorvetes">
-            {sorveteData.map((s) => (
-              <SorveteCard key={s.id} {...s}></SorveteCard>
-            ))}
-          </div>
-        ) : (
-          sorveteData && <div>Sorvete não encontrado!</div>
-        )}
-        {showPopup ? (
-          <Popup message={popupContent.message} color={popupContent.color} />
-        ) : null}
+        <div className="sorvetes">
+          {(sorveteNome !== "" ? sorvetes.filter((s) => s.name.toLowerCase().includes(sorveteNome.toLowerCase())) : sorvetes).map((s) => (<SorveteCard sorvete={s} key={s.id} />))}
+        </div>
+
       </div>
+
+      <PopupDisplay />
+
+
+
     </div>
+
   );
 }
 

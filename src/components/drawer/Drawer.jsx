@@ -26,7 +26,7 @@ export default function AnchorTemporaryDrawer() {
     const list = (anchor) => (
         <Box
             sx={{
-                width: 400,
+                width: 500,
                 p: 2,
                 height: '100%',
                 position: 'relative',
@@ -48,17 +48,17 @@ export default function AnchorTemporaryDrawer() {
                 <Grid container spacing={2}>
                     {cart.map((item) => (
                         <Grid item xs={12} key={item.id}>
-                            <Card sx={{ display: 'flex', borderRadius: 2, boxShadow: 3 }}>
+                            <Card sx={{ display: 'flex', borderRadius: 2, boxShadow: 3 , maxHeight: 150}}>
                                 <CardMedia
                                     component="img"
                                     sx={{ width: 100, objectFit: 'cover' }}
-                                    image={item.img}
+                                    image={item.imageSrc}
                                     alt={item.name}
                                 />
                                 <CardContent sx={{ flex: '1 0 auto' }}>
                                     <Typography component="div" variant="h6">{item.name}</Typography>
                                     <Typography variant="body2" color="text.secondary">Qtd: {item.quantity}</Typography>
-                                    <Typography variant="body2"><b>⭐ {item.rating}</b></Typography>
+                                    <Typography variant="body2"><b>$ {item.price}</b></Typography>
                                     <Button
                                         variant="outlined"
                                         color="error"
@@ -76,18 +76,20 @@ export default function AnchorTemporaryDrawer() {
             )}
 
             {cart.length > 0 && (
-                <Box sx={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
+                <Box >
                     <Button
                         fullWidth
                         variant="contained"
                         color="warning"
                         onClick={() => dispatch(clearCart())}
+                        sx={{ mt: 2, mb: 2, textAlign: 'center' }}
                     >
                         🗑 Limpar Carrinho
                     </Button>
                 </Box>
-            )}
-        </Box>
+            )
+            }
+        </Box >
     );
 
     return (
@@ -96,7 +98,7 @@ export default function AnchorTemporaryDrawer() {
                 <React.Fragment key={anchor}>
                     <a
                         onClick={toggleDrawer(anchor, true)}
-                        sx={{ color: 'white',  }}
+                        sx={{ color: 'white', }}
                     >
                         Carrinho
                     </a>
