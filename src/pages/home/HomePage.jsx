@@ -35,7 +35,7 @@ const HomePage = () => {
           border: "1px solid black",
         }}
       >
-        <Typography
+        <Typography 
           variant="h3"
           sx={{
             color: "white",
